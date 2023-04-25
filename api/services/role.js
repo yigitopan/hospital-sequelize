@@ -1,4 +1,4 @@
-import db from '../../src/models';
+import db from '../../api/src/models';
 
 class RoleService {
     static async addRole(req, res) {
