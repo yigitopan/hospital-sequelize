@@ -1,17 +1,20 @@
 import db from '../../api/src/models';
 
 class UserHospitalService {
-    static async addUserHospital(req, res) {
+
+	static async addUserHospital(req, res) {
 		try {
 			const { user_id, hospital_id } = req.body;
-            const data = {
-				user_id, 
-                hospital_id
+			const data = {
+				user_id,
+				hospital_id
 			};
-			// if (await db.UserHospital.findOne({ where: { name: name } })) {
-			//	res.status(409);
-			//	return { type: false, message: 'UserHospital already exists' };
-			// }
+			/*
+			 *  if (await db.UserHospital.findOne({ where: { name: name } })) {
+			 * 	res.status(409);
+			 * 	return { type: false, message: 'UserHospital already exists' };
+			 *  }
+			 */
 
 			const userHospital = await db.UserHospital.create(data);
 			res.status(201);
@@ -21,7 +24,6 @@ class UserHospitalService {
 			throw error;
 		}
 	}
-
 
 	static async getAllUserHospitals(req, res) {
 		try {

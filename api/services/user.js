@@ -1,14 +1,15 @@
 import db from '../../api/src/models';
 
 class UserService {
-    static async addUser(req, res) {
+
+	static async addUser(req, res) {
 		try {
 			const { name, surname, tc } = req.body;
 			const data = {
 				name,
 				surname,
 				tc,
-                is_removed: false
+				is_removed: false
 			};
 
 			if (await db.User.findOne({ where: { tc: tc } })) {
@@ -29,7 +30,7 @@ class UserService {
 		try {
 			const { tc } = req.body;
 
-			const user = await db.User.findOne({ where: { tc: tc } })
+			const user = await db.User.findOne({ where: { tc: tc } });
 			if (!user) {
 				res.status(409);
 				return { type: false, message: 'User cannot be found.' };

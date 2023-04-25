@@ -1,7 +1,8 @@
 import TerminService from '../services/termin';
 
 class Termin {
-    static async addTermin(req, res) {
+
+	static async addTermin(req, res) {
 		try {
 			const result = await TerminService.addTermin(req, res);
 			if (result.type) {
@@ -45,6 +46,7 @@ class Termin {
 			return res.json({ type: false, message: error.message });
 		}
 	}
+
 }
 
 export default Termin;

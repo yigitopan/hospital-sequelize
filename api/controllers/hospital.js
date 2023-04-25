@@ -1,7 +1,8 @@
 import HospitalService from '../services/hospital';
 
 class Hospital {
-    static async addHospital(req, res) {
+
+	static async addHospital(req, res) {
 		try {
 			const result = await HospitalService.addHospital(req, res);
 			if (result.type) {
@@ -45,6 +46,7 @@ class Hospital {
 			return res.json({ type: false, message: error.message });
 		}
 	}
+
 }
 
 export default Hospital;

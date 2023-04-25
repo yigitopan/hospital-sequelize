@@ -1,7 +1,8 @@
-import UserHospitalService from "../services/userhospital";
+import UserHospitalService from '../services/userhospital';
 
 class UserHospital {
-    static async addUserHospital(req, res) {
+
+	static async addUserHospital(req, res) {
 		try {
 			const result = await UserHospitalService.addUserHospital(req, res);
 			if (result.type) {
@@ -30,6 +31,7 @@ class UserHospital {
 			return res.json({ type: false, message: error.message });
 		}
 	}
+
 }
 
 export default UserHospital;

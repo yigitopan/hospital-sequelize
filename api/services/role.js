@@ -1,10 +1,11 @@
 import db from '../../api/src/models';
 
 class RoleService {
-    static async addRole(req, res) {
+
+	static async addRole(req, res) {
 		try {
 			const { name } = req.body;
-            const data = {
+			const data = {
 				name
 			};
 			if (await db.Role.findOne({ where: { name: name } })) {
@@ -20,7 +21,6 @@ class RoleService {
 			throw error;
 		}
 	}
-
 
 	static async getAllRoles(req, res) {
 		try {

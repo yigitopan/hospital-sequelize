@@ -1,7 +1,8 @@
-import PrivilegeService from "../services/privileges";
+import PrivilegeService from '../services/privileges';
 
 class Privilege {
-    static async addPrivilege(req, res) {
+
+	static async addPrivilege(req, res) {
 		try {
 			const result = await PrivilegeService.addPrivilege(req, res);
 			if (result.type) {
@@ -30,6 +31,7 @@ class Privilege {
 			return res.json({ type: false, message: error.message });
 		}
 	}
+
 }
 
 export default Privilege;

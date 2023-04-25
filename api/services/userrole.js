@@ -1,17 +1,20 @@
 import db from '../../api/src/models';
 
 class UserRoleService {
-    static async addUserRole(req, res) {
+
+	static async addUserRole(req, res) {
 		try {
 			const { user_id, role_id } = req.body;
-            const data = {
-				user_id, 
-                role_id
+			const data = {
+				user_id,
+				role_id
 			};
-			// if (await db.UserRole.findOne({ where: { name: name } })) {
-			//	res.status(409);
-			//	return { type: false, message: 'UserRole already exists' };
-			// }
+			/*
+			 *  if (await db.UserRole.findOne({ where: { name: name } })) {
+			 * 	res.status(409);
+			 * 	return { type: false, message: 'UserRole already exists' };
+			 *  }
+			 */
 
 			const userRole = await db.UserRole.create(data);
 			res.status(201);
@@ -21,7 +24,6 @@ class UserRoleService {
 			throw error;
 		}
 	}
-
 
 	static async getAllUserRoles(req, res) {
 		try {

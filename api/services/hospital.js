@@ -1,13 +1,14 @@
 import db from '../../api/src/models';
 
 class HospitalService {
-    static async addHospital(req, res) {
+
+	static async addHospital(req, res) {
 		try {
 			const { name, address } = req.body;
 			const data = {
 				name,
 				address,
-                is_removed: false
+				is_removed: false
 			};
 
 			if (await db.Hospital.findOne({ where: { name: name } })) {
@@ -28,7 +29,7 @@ class HospitalService {
 		try {
 			const { id } = req.body;
 
-			const hospital = await db.Hospital.findOne({ where: { id: id } })
+			const hospital = await db.Hospital.findOne({ where: { id: id } });
 			if (!hospital) {
 				res.status(409);
 				return { type: false, message: 'Hospital cannot be found.' };
@@ -56,6 +57,7 @@ class HospitalService {
 			throw error;
 		}
 	}
+
 }
 
 export default HospitalService;

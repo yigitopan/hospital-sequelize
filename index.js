@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-var cors = require('cors')
+let cors = require('cors');
 const app = express();
 import userRoutes from './api/routes/user.js';
 import hospitalRoutes from './api/routes/hospital.js';

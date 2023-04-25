@@ -1,10 +1,11 @@
 import db from '../../api/src/models';
 
 class PrivilegeService {
-    static async addPrivilege(req, res) {
+
+	static async addPrivilege(req, res) {
 		try {
 			const { name } = req.body;
-            const data = {
+			const data = {
 				name
 			};
 			if (await db.Privilege.findOne({ where: { name: name } })) {
@@ -20,7 +21,6 @@ class PrivilegeService {
 			throw error;
 		}
 	}
-
 
 	static async getAllPrivileges(req, res) {
 		try {

@@ -1,7 +1,8 @@
 import UserService from '../services/user';
 
 class User {
-    static async addUser(req, res) {
+
+	static async addUser(req, res) {
 		try {
 			const result = await UserService.addUser(req, res);
 			if (result.type) {
@@ -45,6 +46,7 @@ class User {
 			return res.json({ type: false, message: error.message });
 		}
 	}
+
 }
 
 export default User;

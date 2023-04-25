@@ -1,17 +1,20 @@
 import db from '../../api/src/models';
 
 class RolePrivilegeService {
-    static async addRolePrivilege(req, res) {
+
+	static async addRolePrivilege(req, res) {
 		try {
 			const { user_id, role_id } = req.body;
-            const data = {
-				user_id, 
-                role_id
+			const data = {
+				user_id,
+				role_id
 			};
-			// if (await db.RolePrivilege.findOne({ where: { name: name } })) {
-			//	res.status(409);
-			//	return { type: false, message: 'RolePrivilege already exists' };
-			// }
+			/*
+			 *  if (await db.RolePrivilege.findOne({ where: { name: name } })) {
+			 * 	res.status(409);
+			 * 	return { type: false, message: 'RolePrivilege already exists' };
+			 *  }
+			 */
 
 			const rolePrivilege = await db.RolePrivilege.create(data);
 			res.status(201);
@@ -21,7 +24,6 @@ class RolePrivilegeService {
 			throw error;
 		}
 	}
-
 
 	static async getAllRolePrivileges(req, res) {
 		try {

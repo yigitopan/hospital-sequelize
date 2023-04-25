@@ -1,7 +1,8 @@
-import RoleService from "../services/role";
+import RoleService from '../services/role';
 
 class Role {
-    static async addRole(req, res) {
+
+	static async addRole(req, res) {
 		try {
 			const result = await RoleService.addRole(req, res);
 			if (result.type) {
@@ -30,6 +31,7 @@ class Role {
 			return res.json({ type: false, message: error.message });
 		}
 	}
+
 }
 
 export default Role;

@@ -1,7 +1,8 @@
-import RolePrivilegeService from "../services/roleprivelege";
+import RolePrivilegeService from '../services/roleprivelege';
 
 class RolePrivilege {
-    static async addRolePrivilege(req, res) {
+
+	static async addRolePrivilege(req, res) {
 		try {
 			const result = await RolePrivilegeService.addRolePrivilege(req, res);
 			if (result.type) {
@@ -30,6 +31,7 @@ class RolePrivilege {
 			return res.json({ type: false, message: error.message });
 		}
 	}
+
 }
 
 export default RolePrivilege;
