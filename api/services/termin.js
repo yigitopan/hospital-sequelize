@@ -1,4 +1,4 @@
-import db from '../../models';
+import db from '../../src/models';
 
 class TerminService {
     static async addTermin(req, res) {
@@ -31,7 +31,6 @@ class TerminService {
 			const { id } = req.body;
 
 			const termin = await db.Termin.findOne({ where: { id: id } })
-			console.log(termin)
 			if (!termin) {
 				res.status(409);
 				return { type: false, message: 'Termin cannot be found.' };

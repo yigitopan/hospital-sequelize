@@ -1,4 +1,4 @@
-import db from '../../models';
+import db from '../../src/models';
 
 class UserService {
     static async addUser(req, res) {
@@ -30,7 +30,6 @@ class UserService {
 			const { tc } = req.body;
 
 			const user = await db.User.findOne({ where: { tc: tc } })
-			console.log(user)
 			if (!user) {
 				res.status(409);
 				return { type: false, message: 'User cannot be found.' };

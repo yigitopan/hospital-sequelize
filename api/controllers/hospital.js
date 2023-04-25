@@ -2,7 +2,6 @@ import HospitalService from '../services/hospital';
 
 class Hospital {
     static async addHospital(req, res) {
-		console.log("adh")
 		try {
 			const result = await HospitalService.addHospital(req, res);
 			if (result.type) {

@@ -1,4 +1,4 @@
-import db from '../../models';
+import db from '../../src/models';
 
 class UserHospitalService {
     static async addUserHospital(req, res) {

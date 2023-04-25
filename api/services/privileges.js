@@ -1,4 +1,4 @@
-import db from '../../models';
+import db from '../../src/models';
 
 class PrivilegeService {
     static async addPrivilege(req, res) {
