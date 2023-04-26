@@ -13,12 +13,17 @@ class TerminService {
 				is_removed: false
 			};
 
-			/*
-			 * if (await db.Termin.findOne({ where: { tc: tc } })) {
-			 * 	res.status(409);
-			 * 	return { type: false, message: 'Termin already exists' };
-			 * }
-			 */
+			const doctorUser = await db.User.findOne({
+				where: { id: doctor_id },
+				include: [ {
+				  model: db.Role,
+				  where: { name: 'DOCTOR' }
+				} ]
+			  });
+			  
+			  if (!(doctorUser && doctorUser.Roles && doctorUser.Roles.length > 0)) {
+				return { type: false, message: 'This person is not a doctor.' };
+			  }
 
 			const termin = await db.Termin.create(data);
 			res.status(201);
