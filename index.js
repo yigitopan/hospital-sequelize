@@ -9,10 +9,18 @@ import privilegeRoutes from './api/routes/privilege.js';
 import terminRoutes from './api/routes/termin.js';
 import userRoleRoutes from './api/routes/userrole.js';
 import userHospitalRoutes from './api/routes/userhospital.js';
+import rolePrivilege from './api/routes/roleprivilege.js';
+import session from 'express-session';
 
 app.use(bodyParser.json());
 
 app.use(cors());
+
+app.use(session({
+	secret: 'gozgozgoztepe',
+	resave: false,
+	saveUninitialized: false
+}));
 
 app.use('/user', userRoutes);
 app.use('/hospital', hospitalRoutes);
@@ -21,5 +29,6 @@ app.use('/privilege', privilegeRoutes);
 app.use('/termin', terminRoutes);
 app.use('/userrole', userRoleRoutes);
 app.use('/userhospital', userHospitalRoutes);
+app.use('/roleprivilege', rolePrivilege);
 
 app.listen(process.env.PORT || 3000);

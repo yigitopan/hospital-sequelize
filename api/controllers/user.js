@@ -47,6 +47,26 @@ class User {
 		}
 	}
 
+	static async login(req, res) {
+		try {
+			const result = await UserService.login(req, res);
+			if (result.type) {
+				return res.json({ data: result.data, type: true, message: result.message });
+			}
+			else {
+				return res.json({ type: false, message: result.message });
+			}
+		}
+		catch (error) {
+			return res.json({ type: false, message: error.message });
+		}
+	}
+
+	static async getsession(req, res) {
+		const session = req.session;
+		return res.json({ data: session, type: true, message: 'al session' });
+	}
+
 }
 
 export default User;

@@ -1,13 +1,13 @@
-import db from '../../api/src/models';
+import db from '../src/models';
 
 class RolePrivilegeService {
 
 	static async addRolePrivilege(req, res) {
 		try {
-			const { user_id, role_id } = req.body;
+			const { role_id, privilege_id } = req.body;
 			const data = {
-				user_id,
-				role_id
+				role_id,
+				privilege_id
 			};
 			/*
 			 *  if (await db.RolePrivilege.findOne({ where: { name: name } })) {

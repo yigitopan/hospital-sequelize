@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Privilege.belongsToMany(models.Role, {
         through: 'RolePrivilege',
-        foreignKey: 'role_id'
+        foreignKey: 'privilege_id'
       });
     }
   }

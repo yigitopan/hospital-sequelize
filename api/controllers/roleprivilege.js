@@ -1,4 +1,4 @@
-import RolePrivilegeService from '../services/roleprivelege';
+import RolePrivilegeService from '../services/roleprivilege';
 
 class RolePrivilege {
 

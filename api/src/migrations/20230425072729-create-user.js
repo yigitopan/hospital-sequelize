@@ -16,6 +16,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       tc: {
+        type: Sequelize.STRING,
+        unique: true
+      },
+      password: {
         type: Sequelize.STRING
       },
       is_removed: {
