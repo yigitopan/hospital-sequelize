@@ -62,11 +62,6 @@ class User {
 		}
 	}
 
-	static async getsession(req, res) {
-		const session = req.session;
-		return res.json({ data: session, type: true, message: 'al session' });
-	}
-
 }
 
 export default User;
