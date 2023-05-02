@@ -14,7 +14,7 @@ class Auth {
         
 			try {
 				const decodedToken = jwt.verify(sessionToken, 'gozgozgoztepe');
-				console.log(decodedToken.userId);
+				req.userId = decodedToken.userId;
 
 				const user = await db.User.findOne({
 					where: { id: decodedToken.userId },
@@ -53,7 +53,7 @@ class Auth {
 
 			}
 			catch (error) {
-				return res.status(500).json({ type: false, message: error.message });
+				return res.status(500).json({ type: false, message: 'Invalid Token' });
 			}
 		};
 	}

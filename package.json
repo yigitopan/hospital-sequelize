@@ -4,20 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon --delay 500ms --exec babel-node index.js",
+    "test": "mocha api/test --require babel-register"
   },
   "repository": {
     "start": "nodemon --exec babel-node index.js",
     "type": "git",
-    "url": "git+https://github.com/ysntrkc/orderapi.git"
+    "url": "git+https://github.com/yigitopan/hospital-sequelize"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ysntrkc/orderapi/issues"
+    "url": "https://github.com/yigitopan/hospital-sequelize/issues"
   },
-  "homepage": "https://github.com/ysntrkc/orderapi#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
@@ -38,6 +37,9 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
-    "eslint": "^8.24.0"
+    "chai": "^4.3.7",
+    "eslint": "^8.24.0",
+    "mocha": "^10.2.0",
+    "sinon": "^15.0.4"
   }
 }
