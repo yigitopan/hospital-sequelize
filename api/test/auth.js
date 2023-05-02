@@ -69,6 +69,7 @@ describe('Auth-Middleware', function(){
 		expect(req).to.have.property('userId');
 		expect(req).to.have.property('userId', 'abc');
 
+		jwt.verify.restore();
 	});
 	
 });
