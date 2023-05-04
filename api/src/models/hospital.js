@@ -20,7 +20,10 @@ module.exports = (sequelize, DataTypes) => {
   Hospital.init({
     name: DataTypes.STRING,
     address: DataTypes.STRING,
-    is_removed: DataTypes.BOOLEAN
+    is_removed: {
+      type:DataTypes.BOOLEAN,
+      defaultValue:false
+    }
   }, {
     sequelize,
     modelName: 'Hospital',

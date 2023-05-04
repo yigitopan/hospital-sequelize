@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --delay 500ms --exec babel-node index.js",
-    "test": "mocha api/test --require babel-register"
+    "test": "sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all && mocha api/test --require babel-register -r dotenv/config"
   },
   "repository": {
     "start": "nodemon --exec babel-node index.js",
@@ -20,6 +20,7 @@
   "dependencies": {
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
+    "chai-http": "^4.3.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",

@@ -35,8 +35,6 @@ class Auth {
 					  }
 					});
 
-					console.log(thisUserHasPrivilege);
-
 					if (thisUserHasPrivilege) {
 						next();
 					}

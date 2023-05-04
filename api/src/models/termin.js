@@ -39,7 +39,10 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id'
       }
     },
-    is_removed: DataTypes.BOOLEAN
+    is_removed: {
+      type:DataTypes.BOOLEAN,
+      defaultValue: false
+    }
   }, {
     sequelize,
     modelName: 'Termin',

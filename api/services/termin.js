@@ -48,7 +48,7 @@ class TerminService {
 				await termin.save();
 			}
 
-			res.status(201);
+			res.status(200);
 			return { data: termin, type: true, message: 'Termins status has been moved to removed' };
 		}
 		catch (error) {

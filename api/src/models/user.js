@@ -27,7 +27,10 @@ module.exports = (sequelize, DataTypes) => {
     surname: DataTypes.STRING,
     tc: {type: DataTypes.STRING, unique: true},
     password: DataTypes.STRING,
-    is_removed: DataTypes.BOOLEAN
+    is_removed: {
+      type:DataTypes.BOOLEAN,
+      defaultValue:false
+    }
   }, {
     sequelize,
     modelName: 'User',

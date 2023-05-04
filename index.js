@@ -11,6 +11,7 @@ import userRoleRoutes from './api/routes/userrole.js';
 import userHospitalRoutes from './api/routes/userhospital.js';
 import rolePrivilege from './api/routes/roleprivilege.js';
 import session from 'express-session';
+require('dotenv').config();
 
 app.use(bodyParser.json());
 
@@ -32,3 +33,5 @@ app.use('/userhospital', userHospitalRoutes);
 app.use('/roleprivilege', rolePrivilege);
 
 app.listen(process.env.PORT || 3000);
+
+module.exports = app;

@@ -39,7 +39,7 @@ class HospitalService {
 				await hospital.save();
 			}
 
-			res.status(201);
+			res.status(200);
 			return { data: hospital, type: true, message: 'Hospitals status has been moved to removed' };
 		}
 		catch (error) {

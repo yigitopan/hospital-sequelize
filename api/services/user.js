@@ -18,7 +18,7 @@ class UserService {
 				await user.save();
 			}
 
-			res.status(201);
+			res.status(200);
 			return { data: user, type: true, message: 'Users status has been moved to removed' };
 		}
 		catch (error) {
@@ -52,7 +52,7 @@ class UserService {
 					tc,
 					password: hashedPassword
 		  });
-				res.status(200);
+				res.status(201);
 				return { type: true, data: user, message: 'User signed up successfully' };
 		  }
 			catch (error) {
@@ -85,8 +85,7 @@ class UserService {
 			return { type: true, data: {token, user}, message: 'User logged in successfully' };
 		}
 		catch (err) {
-			// eslint-disable-next-line no-undef
-			next();
+			throw err;
 		}
 	  }
 
