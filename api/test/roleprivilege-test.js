@@ -40,7 +40,7 @@ describe('/roleprivileges', () => {
 	it('/add should FAIL, because of invalid foreign key.', (done) => {
 		agent
 			.post('/roleprivilege/add')
-			.send({ role_id: 31, privilege_id: 12 }) 
+			.send({ role_id: 38, privilege_id: 12 }) 
 			.then(function (res) {
 				//violates foreign key constraint
 				expect(res.text).to.contain('violates foreign key constraint');
