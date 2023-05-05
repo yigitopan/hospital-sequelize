@@ -5,7 +5,6 @@ class Privilege {
 	/**
 	 * @typedef PrivilegeAdd
 	 * @property {string} name
-	 * @property {string} address
 	 */
 	/**
 	 * Adds a new privilege.
