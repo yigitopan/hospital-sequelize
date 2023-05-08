@@ -3,19 +3,42 @@ import TerminService from '../services/termin';
 class Termin {
 
 	/**
-	 * @typedef TerminAdd
-	 * @property {string} date
-	 * @property {integer} doctor_id
-	 * @property {integer} user_id
-	 * @property {integer} hospital_id
+	 * @swagger
+	 * tags:
+	 *   name: Termin
+	 *   description: APIs for termin management
 	 */
+
 	/**
-	 * Adds a new termin.
-	 * @route POST /termin/add
-	 * @group Termin - Operations about termin
-	 * @param {TerminAdd.model} body.body - The name of the termin.
-	 * @returns {object} 201 - Added succesfully message.
-	 * @returns {object} 401 - An error message indicating that inputs are invalid.
+	 * @swagger
+	 * /termin/add:
+	 *   post:
+	 *     tags:
+	 *       - Termin
+	 *     description: Create new termin
+	 *     produces:
+	 *       - application/json
+	 *     parameters:
+	 *       - name: body
+	 *         description: Termin data
+	 *         in: body
+	 *         required: true
+	 *         schema:
+	 *           type: object
+	 *           properties:
+	 *             date:
+	 *               type: string
+	 *             doctor_id:
+	 *               type: integer
+	 *             user_id:
+	 *               type: integer
+	 *             hospital_id:
+	 *               type: integer
+	 *     responses:
+	 *       201:
+	 *         description: Successfully logged in
+	 *       401:
+	 *         description: Invalid credentials
 	 */
 	static async addTermin(req, res) {
 		try {
@@ -33,16 +56,29 @@ class Termin {
 	}
 
 	/**
-	 * @typedef TerminRemove
-	 * @property {integer} id
-	 */
-	/**
-	 * Sets the is_removed attribute of Termin to true.
-	 * @route POST /termin/remove
-	 * @group Termin - Operations about termin
-	 * @param {TerminRemove.model} body.body - The id of the termin.
-	 * @returns {object} 200 - Removed succesfully message.
-	 * @returns {object} 401 - An error message indicating that inputs are invalid.
+	 * @swagger
+	 * /termin/remove:
+	 *   post:
+	 *     tags:
+	 *       - Termin
+	 *     description: Remove a termin
+	 *     produces:
+	 *       - application/json
+	 *     parameters:
+	 *       - name: body
+	 *         description: Termin data
+	 *         in: body
+	 *         required: true
+	 *         schema:
+	 *           type: object
+	 *           properties:
+	 *             id:
+	 *               type: integer
+	 *     responses:
+	 *       200:
+	 *         description: Successfully removed
+	 *       401:
+	 *         description: Invalid credentials
 	 */
 	static async removeTermin(req, res) {
 		try {
@@ -60,12 +96,32 @@ class Termin {
 	}
 
 	/**
-	 * Gets all the termins
-	 * @route GET /termin/get
-	 * @group Termin - Operations about termins
-	 * @returns {object} 200 - List of termins
-	 * @returns {Error}  401 - Unexpected error
-	 *
+	 * @swagger
+	 * /termin/get:
+	 *   get:
+	 *     tags:
+	 *       - Termin
+	 *     description: Get all termins
+	 *     produces:
+	 *       - application/json
+	 *     responses:
+	 *       200:
+	 *         description: OK
+	 *         schema:
+	 *           type: array
+	 *           items:
+	 *             type: object
+	 *             properties:
+	 *               id:
+	 *                 type: integer
+	 *               date:
+	 *                 type: string
+	 *               doctor_id:
+	 *                 type: integer
+	 *               user_id:
+	 *                 type: integer
+	 *               hospital_id:
+	 *                 type: integer
 	 */
 	static async getAllTermins(req, res) {
 		try {

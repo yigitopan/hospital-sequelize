@@ -3,17 +3,38 @@ import UserHospitalService from '../services/userhospital';
 class UserHospital {
 
 	/**
-	 * @typedef UserHospitalAdd
-	 * @property {integer} user_id
-	 * @property {integer} hospital_id
+	 * @swagger
+	 * tags:
+	 *   name: UserHospital
+	 *   description: APIs for UserHospitals
 	 */
+
 	/**
-	 * Adds a new UserHospital.
-	 * @route POST /userhospital/add
-	 * @group UserHospital - Operations about UserHospital
-	 * @param {UserHospitalAdd.model} body.body - Foreign keys.
-	 * @returns {object} 201 - Added succesfully message.
-	 * @returns {object} 401 - An error message indicating that inputs are invalid.
+	 * @swagger
+	 * /userhospital/add:
+	 *   post:
+	 *     tags:
+	 *       - UserHospital
+	 *     description: Binds a user with hospital
+	 *     produces:
+	 *       - application/json
+	 *     parameters:
+	 *       - name: body
+	 *         description: Foreign Keys
+	 *         in: body
+	 *         required: true
+	 *         schema:
+	 *           type: object
+	 *           properties:
+	 *             user_id:
+	 *               type: integer
+	 *             hospital_id:
+	 *               type: integer
+	 *     responses:
+	 *       201:
+	 *         description: Successfully added
+	 *       401:
+	 *         description: Invalid credentials
 	 */
 	static async addUserHospital(req, res) {
 		try {
@@ -31,12 +52,28 @@ class UserHospital {
 	}
 
 	/**
-	 * Gets all the UserHospitals
-	 * @route GET /userhospital/get
-	 * @group UserHospital - Operations about UserHospital
-	 * @returns {object} 200 - List of UserHospitals
-	 * @returns {Error}  401 - Unexpected error
-	 *
+	 * @swagger
+	 * /userhospital/get:
+	 *   get:
+	 *     tags:
+	 *       - UserHospital
+	 *     description: Get all UserHospitals
+	 *     produces:
+	 *       - application/json
+	 *     responses:
+	 *       200:
+	 *         description: OK
+	 *         schema:
+	 *           type: array
+	 *           items:
+	 *             type: object
+	 *             properties:
+	 *               id:
+	 *                 type: integer
+	 *               user_id:
+	 *                 type: integer
+	 *               hospital_id:
+	 *                 type: integer
 	 */
 	static async getAllUserHospitals(req, res) {
 		try {

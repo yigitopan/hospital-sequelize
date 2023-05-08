@@ -3,18 +3,40 @@ import HospitalService from '../services/hospital';
 class Hospital {
 
 	/**
-	 * @typedef Hospitaladd
-	 * @property {string} name
-	 * @property {string} address
+	 * @swagger
+	 * tags:
+	 *   name: Hospital
+	 *   description: APIs for hospital management
 	 */
+
 	/**
-	 * Adds a new hospital.
-	 * @route POST /hospital/add
-	 * @group Hospital - Operations about hospital
-	 * @param {Hospitaladd.model} body.body - The name of the hospital.
-	 * @returns {object} 201 - Added succesfully message.
-	 * @returns {object} 401 - An error message indicating that inputs are invalid.
+	 * @swagger
+	 * /hospital/add:
+	 *   post:
+	 *     tags:
+	 *       - Hospital
+	 *     description: Add new Hospital
+	 *     produces:
+	 *       - application/json
+	 *     parameters:
+	 *       - name: body
+	 *         description: Hospital attributes
+	 *         in: body
+	 *         required: true
+	 *         schema:
+	 *           type: object
+	 *           properties:
+	 *             name:
+	 *               type: string
+	 *             address:
+	 *               type: string
+	 *     responses:
+	 *       201:
+	 *         description: Successfully added
+	 *       401:
+	 *         description: Invalid inputs
 	 */
+
 	static async addHospital(req, res) {
 		try {
 			const result = await HospitalService.addHospital(req, res);
@@ -31,17 +53,31 @@ class Hospital {
 	}
 
 	/**
-	 * @typedef HospitalRemove
-	 * @property {integer} id
+	 * @swagger
+	 * /hospital/remove:
+	 *   post:
+	 *     tags:
+	 *       - Hospital
+	 *     description: Remove a Hospital
+	 *     produces:
+	 *       - application/json
+	 *     parameters:
+	 *       - name: body
+	 *         description: Hospital attributes
+	 *         in: body
+	 *         required: true
+	 *         schema:
+	 *           type: object
+	 *           properties:
+	 *             id:
+	 *               type: integer
+	 *     responses:
+	 *       200:
+	 *         description: Successfully removed
+	 *       401:
+	 *         description: Invalid inputs
 	 */
-	/**
-	 * Sets the is_removed attribute of hospital to true.
-	 * @route POST /hospital/remove
-	 * @group Hospital - Operations about hospital
-	 * @param {HospitalRemove.model} body.body - The id of the hospital.
-	 * @returns {object} 200 - Removed succesfully message.
-	 * @returns {object} 401 - An error message indicating that inputs are invalid.
-	 */
+
 	static async removeHospital(req, res) {
 		try {
 			const result = await HospitalService.removeHospital(req, res);
@@ -58,12 +94,28 @@ class Hospital {
 	}
 	
 	/**
-	 * Gets all the hospitals
-	 * @route GET /hospital/get
-	 * @group Hospital - Operations about hospital
-	 * @returns {object} 200 - List of hospital s
-	 * @returns {Error}  401 - Unexpected error
-	 *
+	 * @swagger
+	 * /hospital/get:
+	 *   get:
+	 *     tags:
+	 *       - Hospital
+	 *     description: Get all hospitals
+	 *     produces:
+	 *       - application/json
+	 *     responses:
+	 *       200:
+	 *         description: OK
+	 *         schema:
+	 *           type: array
+	 *           items:
+	 *             type: object
+	 *             properties:
+	 *               id:
+	 *                 type: integer
+	 *               name:
+	 *                 type: string
+	 *               address:
+	 *                 type: string
 	 */
 	static async getAllHospital(req, res) {
 		try {

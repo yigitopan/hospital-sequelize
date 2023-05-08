@@ -3,17 +3,38 @@ import RolePrivilegeService from '../services/roleprivilege';
 class RolePrivilege {
 
 	/**
-	 * @typedef RolePrivilegeAdd
-	 * @property {string} name
-	 * @property {string} address
+	 * @swagger
+	 * tags:
+	 *   name: RolePrivilege
+	 *   description: APIs for RolePrivileges
 	 */
+
 	/**
-	 * Adds a new RolePrivilege.
-	 * @route POST /roleprivilege/add
-	 * @group RolePrivilege - Operations about RolePrivilege
-	 * @param {RolePrivilegeAdd.model} body.body - The name of the roleprivilege.
-	 * @returns {object} 201 - Added succesfully message.
-	 * @returns {object} 401 - An error message indicating that inputs are invalid.
+	 * @swagger
+	 * /roleprivilege/add:
+	 *   post:
+	 *     tags:
+	 *       - RolePrivilege
+	 *     description: Binds a privilege with a role
+	 *     produces:
+	 *       - application/json
+	 *     parameters:
+	 *       - name: body
+	 *         description: User's login credentials
+	 *         in: body
+	 *         required: true
+	 *         schema:
+	 *           type: object
+	 *           properties:
+	 *             role_id:
+	 *               type: integer
+	 *             privilege_id:
+	 *               type: integer
+	 *     responses:
+	 *       201:
+	 *         description: Successfully added
+	 *       401:
+	 *         description: Invalid credentials
 	 */
 	static async addRolePrivilege(req, res) {
 		try {
@@ -30,12 +51,28 @@ class RolePrivilege {
 		}
 	}
 	/**
-	 * Gets all the RolePrivileges
-	 * @route GET /roleprivilege/get
-	 * @group RolePrivilege - Operations about RolePrivilege
-	 * @returns {object} 200 - List of RolePrivileges
-	 * @returns {Error}  401 - Unexpected error
-	 *
+	 * @swagger
+	 * /roleprivilege/get:
+	 *   get:
+	 *     tags:
+	 *       - RolePrivilege
+	 *     description: Get all RolePrivileges
+	 *     produces:
+	 *       - application/json
+	 *     responses:
+	 *       200:
+	 *         description: OK
+	 *         schema:
+	 *           type: array
+	 *           items:
+	 *             type: object
+	 *             properties:
+	 *               id:
+	 *                 type: integer
+	 *               role_id:
+	 *                 type: integer
+	 *               privilege_id:
+	 *                 type: integer
 	 */
 	static async getAllRolePrivileges(req, res) {
 		try {

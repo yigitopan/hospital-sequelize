@@ -3,16 +3,36 @@ import PrivilegeService from '../services/privileges';
 class Privilege {
 
 	/**
-	 * @typedef PrivilegeAdd
-	 * @property {string} name
+	 * @swagger
+	 * tags:
+	 *   name: Privilige
+	 *   description: APIs for privilige management
 	 */
+
 	/**
-	 * Adds a new privilege.
-	 * @route POST /privilege/add
-	 * @group Privilege - Operations about privilege
-	 * @param {PrivilegeAdd.model} body.body - The name of the privilege.
-	 * @returns {object} 201 - Added succesfully message.
-	 * @returns {object} 401 - An error message indicating that inputs are invalid.
+	 * @swagger
+	 * /privilige/add:
+	 *   post:
+	 *     tags:
+	 *       - Privilige
+	 *     description: Insert Privilige
+	 *     produces:
+	 *       - application/json
+	 *     parameters:
+	 *       - name: body
+	 *         description: privilige
+	 *         in: body
+	 *         required: true
+	 *         schema:
+	 *           type: object
+	 *           properties:
+	 *             name:
+	 *               type: string
+	 *     responses:
+	 *       201:
+	 *         description: Successfully added
+	 *       401:
+	 *         description: Invalid credentials
 	 */
 	static async addPrivilege(req, res) {
 		try {
@@ -30,12 +50,26 @@ class Privilege {
 	}
 
 	/**
-	 * Gets all the Privileges
-	 * @route GET /privilege/get
-	 * @group Privilege - Operations about privilege
-	 * @returns {object} 200 - List of privileges
-	 * @returns {Error}  401 - Unexpected error
-	 *
+	 * @swagger
+	 * /privilege/get:
+	 *   get:
+	 *     tags:
+	 *       - Privilige
+	 *     description: Get all priviliges
+	 *     produces:
+	 *       - application/json
+	 *     responses:
+	 *       200:
+	 *         description: OK
+	 *         schema:
+	 *           type: array
+	 *           items:
+	 *             type: object
+	 *             properties:
+	 *               id:
+	 *                 type: integer
+	 *               name:
+	 *                 type: string
 	 */
 	static async getAllPrivileges(req, res) {
 		try {

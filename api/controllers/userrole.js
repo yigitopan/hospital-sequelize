@@ -3,18 +3,38 @@ import UserRoleService from '../services/userrole';
 class UserRole {
 
 	/**
-	 * @typedef UserRoleAdd
-	 * @property {integer} user_id
-	 * @property {integer} role_id
-	 * @property {string} address
+	 * @swagger
+	 * tags:
+	 *   name: UserRole
+	 *   description: APIs for UserRole
 	 */
+
 	/**
-	 * Adds a new UserRole.
-	 * @route POST /userrole/add
-	 * @group UserRole - Operations about UserRoles
-	 * @param {UserRoleAdd.model} body.body - Foreign keys.
-	 * @returns {object} 201 - Added succesfully message.
-	 * @returns {object} 401 - An error message indicating that inputs are invalid.
+	 * @swagger
+	 * /userrole/add:
+	 *   post:
+	 *     tags:
+	 *       - UserRole
+	 *     description: Assign a role to user
+	 *     produces:
+	 *       - application/json
+	 *     parameters:
+	 *       - name: body
+	 *         description: Foreign keys
+	 *         in: body
+	 *         required: true
+	 *         schema:
+	 *           type: object
+	 *           properties:
+	 *             user_id:
+	 *               type: integer
+	 *             role_id:
+	 *               type: integer
+	 *     responses:
+	 *       201:
+	 *         description: Successfully added
+	 *       401:
+	 *         description: Invalid credentials
 	 */
 	static async addUserRole(req, res) {
 		try {
@@ -30,14 +50,29 @@ class UserRole {
 			return res.json({ type: false, message: error.message });
 		}
 	}
-
 	/**
-	 * Gets all the UserRoles
-	 * @route GET /userrole/get
-	 * @group UserRole - Operations about UserRoles
-	 * @returns {object} 200 - List of UserRoles
-	 * @returns {Error}  401 - Unexpected error
-	 *
+	 * @swagger
+	 * /userrole/get:
+	 *   get:
+	 *     tags:
+	 *       - UserRole
+	 *     description: Get all UserRoles
+	 *     produces:
+	 *       - application/json
+	 *     responses:
+	 *       200:
+	 *         description: OK
+	 *         schema:
+	 *           type: array
+	 *           items:
+	 *             type: object
+	 *             properties:
+	 *               id:
+	 *                 type: integer
+	 *               user_id:
+	 *                 type: integer
+	 *               role_id:
+	 *                 type: integer
 	 */
 	static async getAllUserRoles(req, res) {
 		try {

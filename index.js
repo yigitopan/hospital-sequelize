@@ -1,10 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-
 import session from 'express-session';
-
-import swaggerOptions from './api/src/config/swagger-options.js';
 
 import userRoutes from './api/routes/user.js';
 import hospitalRoutes from './api/routes/hospital.js';
@@ -15,6 +12,10 @@ import userRoleRoutes from './api/routes/userrole.js';
 import userHospitalRoutes from './api/routes/userhospital.js';
 import rolePrivilege from './api/routes/roleprivilege.js';
 
+import swaggerOptions from './api/src/config/swagger-options.js';
+import swaggerJsdoc  from 'swagger-jsdoc';
+import swaggerUI from 'swagger-ui-express';
+
 const app = express();
 
 require('dotenv').config();
@@ -23,9 +24,8 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
-const expressSwagger = require('express-swagger-generator')(app);
-
-expressSwagger(swaggerOptions);
+const swaggerDocs = swaggerJsdoc(swaggerOptions);
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 app.use(session({
 	secret: 'gozgozgoztepe',

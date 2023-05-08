@@ -3,16 +3,36 @@ import RoleService from '../services/role';
 class Role {
 
 	/**
-	 * @typedef Roleadd
-	 * @property {string} name
+	 * @swagger
+	 * tags:
+	 *   name: Role
+	 *   description: APIs for role management
 	 */
+
 	/**
-	 * Adds a new role.
-	 * @route POST /role/add
-	 * @group Role - Operations about role
-	 * @param {Roleadd.model} body.body - The name of the role.
-	 * @returns {object} 201 - Added succesfully message.
-	 * @returns {object} 401 - An error message indicating that inputs are invalid.
+	 * @swagger
+	 * /role/add:
+	 *   post:
+	 *     tags:
+	 *       - Role
+	 *     description: Adds a new role
+	 *     produces:
+	 *       - application/json
+	 *     parameters:
+	 *       - name: body
+	 *         description: Name of the role
+	 *         in: body
+	 *         required: true
+	 *         schema:
+	 *           type: object
+	 *           properties:
+	 *             name:
+	 *               type: string
+	 *     responses:
+	 *       201:
+	 *         description: Successfully added 
+	 *       401:
+	 *         description: Invalid credentials
 	 */
 	static async addRole(req, res) {
 		try {
@@ -30,11 +50,26 @@ class Role {
 	}
 
 	/**
-	 * Returns all of the roles.
-	 * @route GET /role/get
-	 * @group Role - Operations about role
-	 * @returns {object} 200 - Fetched succesfully message.
-	 * @returns {object} 401 - An error message indicating that inputs are invalid.
+	 * @swagger
+	 * /role/get:
+	 *   get:
+	 *     tags:
+	 *       - Role
+	 *     description: Get all roles
+	 *     produces:
+	 *       - application/json
+	 *     responses:
+	 *       200:
+	 *         description: OK
+	 *         schema:
+	 *           type: array
+	 *           items:
+	 *             type: object
+	 *             properties:
+	 *               id:
+	 *                 type: integer
+	 *               name:
+	 *                 type: string
 	 */
 	static async getAllRoles(req, res) {
 		try {
